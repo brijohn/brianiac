@@ -1,0 +1,4 @@
+appdirs==1.4.4
+click==8.0.3
+click-shell==2.1
+rply==0.7.8

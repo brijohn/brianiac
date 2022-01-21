@@ -1,0 +1,121 @@
+op  func i  rn   rm
+000 0000 0 0000 0000
+
+op
+000 - misc
+001 - ALU
+010 - branch
+011 - ld/st
+
+
+Misc
+nop
+000 0000 0 0000 0000
+
+
+ALU
+add rn,rm
+001 0000 0 nnnn mmmm
+add rn, #imm
+001 0000 1 nnnn 0000
+
+sub rn,rm
+001 0001 0 nnnn mmmm
+sub rn, #imm
+001 0001 1 nnnn 0000
+
+and rn,rm
+001 0010 0 nnnn mmmm
+and rn, #imm
+001 0010 1 nnnn 0000
+
+or  rn,rm
+001 0011 0 nnnn mmmm
+or  rn, #imm
+001 0011 1 nnnn 0000
+
+xor rn,rm
+001 0100 0 nnnn mmmm
+xor rn, #imm
+001 0100 1 nnnn 0000
+
+not rn
+001 0101 0 nnnn 0000
+
+shr rn
+001 0110 0 nnnn 0000
+
+shl rn
+001 0111 0 nnnn 0000
+
+cp rn, rm
+001 1000 0 nnnn mmmm
+cp rn, #imm
+001 1000 1 nnnn 0000
+
+test rn, rm
+001 1001 0 nnnn mmmm
+test rn, #imm
+001 1001 1 nnnn 0000
+
+
+Load/Store
+ldw rn,#imm
+011 0000 1 nnnn 0000
+ldw rn, @rm
+011 0000 0 nnnn mmmm
+
+ldb rn,#imm
+011 1000 1 nnnn 0000
+ldb rn, @rm
+011 1000 0 nnnn mmmm
+
+mov rn,rm
+011 0001 0 nnnn mmmm
+mov rn, #imm
+011 0001 1 nnnn 0000
+
+stw @rn,rm
+011 0010 0 nnnn mmmm
+stw #imm, rm
+011 0010 1 0000 mmmm
+
+stb @rn,rm
+011 1010 0 nnnn mmmm
+stb #imm, rm
+011 1010 1 0000 mmmm
+
+
+Branching
+bra #imm
+010 0000 1 0000 0000
+bra @rm
+010 0000 0 0000 mmmm
+
+bz #imm
+010 0001 1 0000 0000
+bz @rm
+010 0001 0 0000 mmmm
+
+bnz #imm
+010 0010 1 0000 0000
+bnz @rm
+010 0010 0 0000 mmmm
+
+bc #imm
+010 0011 1 0000 0000
+bc @rm
+010 0011 0 0000 mmmm
+
+bnc #imm
+010 0100 1 0000 0000
+bnc @rm
+010 0100 0 0000 mmmm
+
+call #imm
+010 1110 1 1111 0000
+call @rm
+010 1110 0 1111 mmmm
+
+ret
+010 1111 0 0000 1111
